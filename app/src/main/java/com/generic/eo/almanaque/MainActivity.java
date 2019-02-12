@@ -13,8 +13,6 @@ import com.generic.eo.almanaque.Controlador.HttpTask;
 import com.generic.eo.almanaque.Modelo.AsyncTaskEvents;
 import com.generic.eo.almanaque.Modelo.MainMenu;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 
 public class MainActivity extends AppCompatActivity implements AsyncTaskEvents {
 
@@ -141,13 +139,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskEvents {
 
         }
 
-        JsonParser jsonParser = new JsonParser();
-
-        JsonElement jsonElement = jsonParser.parse(response);
-
-        Gson gson = new Gson();
-
-        mainMenu = gson.fromJson(jsonElement, MainMenu.class);
+        mainMenu = new Gson().fromJson(response, MainMenu.class);
 
         cargarLista();
 
